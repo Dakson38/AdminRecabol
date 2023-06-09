@@ -1,0 +1,109 @@
+.informacion-principal{
+    background-color: #f4f4f4;
+    width: 75vw;
+    min-height: 80.1vh;
+    display: flex;
+    flex-direction: column;
+
+    padding: 2%;
+}
+
+/*+++++++++++++++++Informacion del empleado recepcionista, clienete y costos++++++++++++++++++++++++++++*/
+.informacion-empleado-cliente-costo{
+    display: flex;
+    flex-direction: row;
+    
+    
+}
+.titulo-informacion{
+    text-align: center;
+}
+.informacion-tarjeta-1{
+    display: flex;
+    flex-direction: column;
+    padding: 1%;
+    background-color: #FFC700;
+    min-width: 20%;
+}
+.informacion-tarjeta-1 p{
+    height: 0;
+}
+.informacion-tarjeta-2{
+    display: flex;
+    flex-direction: column;
+    padding: 1%;
+    background-color: rgba(255, 199, 0, 0.5);
+    min-width: 20%;
+}
+.informacion-tarjeta-2 p{
+    height: 0;
+}
+.informacion-tarjeta-3{
+    display: flex;
+    flex-direction: column;
+    padding: 1%;
+    background-color: rgba(245, 208, 75, 0.5);
+    min-width: 20%;
+}
+.informacion-tarjeta-3 p{
+    height: 0;
+}
+/*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+
+
+.informacion-neumaticos{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    background-color: #E9651A;
+
+    color: #fff;
+    font-weight: 900;
+    height: 8vh;
+
+    
+}
+
+
+.contenedor-tarjeta-neumatico{
+    padding: 2%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+
+    min-height: 33vh;
+}
+
+
+/*++++++++++++++++++++Tarjeta Neumatico++++++++++++++++++++++++++++++*/
+.tarjeta-neumatico{
+    background-color: rgba(211, 237, 53, 0.4);
+    width: 30%;
+    height: 30vh;
+
+    margin-bottom: 2%;
+
+    font-size: 11px;
+    text-align: left;
+
+    padding: 2px;
+}
+.color-trabajo p{
+    text-align: center;
+    background-color: rgba(66, 196, 45, 0.8);
+    border-radius: 10px;
+    color: #fff;
+}
+.puntos-editar-eliminar{
+    display: flex;
+    flex-direction: row;
+}
+.puntos-editar-eliminar button{
+    border: none;
+    background-color: rgba(211, 237, 53, 0);
+}
+/*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/

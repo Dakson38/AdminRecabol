@@ -1,0 +1,9 @@
+.informacion-principal{
+    background-color: #f4f4f4;
+    width: 75vw;
+    min-height: 80.1vh;
+    display: flex;
+    flex-direction: column;
+
+    padding: 2%;
+}

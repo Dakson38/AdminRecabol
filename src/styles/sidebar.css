@@ -1,0 +1,74 @@
+.sidebar-main{
+    z-index: 0;
+    width: 20%;
+    height: 100vh;
+    position: fixed;
+    background: linear-gradient(173.44deg, rgba(255, 255, 255, 0.8) 53.32%, rgba(255, 199, 0, 0.8) 110.27%);
+
+    font-weight: bolder;
+}
+
+.logo-recabol{
+    height: 15%;
+    display: flex;
+    align-items: center;
+}
+.logo-recabol img{
+    width: 100%;
+    height: 40%;
+}
+
+
+.lista-menu-sidebar{
+    height: 65%;
+    display: flex;
+    flex-direction: column;
+
+    padding-left: 5%;
+    padding-right: 3%;
+
+    font-size: small;
+}
+.lista-menu-sidebar a {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+
+    height: 12%;
+
+    text-decoration: none;
+}
+
+
+
+.lista-conf-salir{
+    height: 20%;
+    display: flex;
+    flex-direction: column;
+    padding-left: 5%;
+    font-size: small;
+}
+.lista-conf-salir a{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    height: 40%;
+
+    text-decoration: none;
+}
+
+.header-bar{
+    height: 11vh;
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: end;
+    align-items: center;
+
+    font-weight: bolder;
+}
+.header-bar img {
+    margin-right: 3%;
+}
