@@ -11,7 +11,7 @@ export const defaultData = [
     {
         nro_orden: 2,
         nombres: 'Jose',
-        apellidos:'Calancha',
+        apellidos:'Pacheco',
         fecha_creacion: '21/05/2022',
         fecha_entrega: '22/05/2022',
         cotizacion: 90,
