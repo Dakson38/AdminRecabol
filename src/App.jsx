@@ -9,6 +9,8 @@ import MasTrabajoOrden from './components/MasTrabajoOrden'
 import DataListaTrabajos from './components/ListaTrabajos'
 
 import { defaultData } from './components/utils/defaultData'
+import { dataReportes } from './components/utils/dataReportes'
+import DataReporteRechazo from './components/ReportesRechazo'
 
 
 function App() {
@@ -23,7 +25,7 @@ function App() {
           <p>ADMIN</p>
           <img src={imgAdmin} alt="" />
         </div>
-        <DataListaTrabajos dataTrabajos={defaultData}/>
+        <DataReporteRechazo dataReporteRechazo={dataReportes}/>
       </div>
     </div>
   )
