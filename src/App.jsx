@@ -10,7 +10,9 @@ import DataListaTrabajos from './components/ListaTrabajos'
 
 import { defaultData } from './components/utils/defaultData'
 import { dataReportes } from './components/utils/dataReportes'
+import { dataReportesFinalizacion } from './components/utils/dataFinalizacion'
 import DataReporteRechazo from './components/ReportesRechazo'
+import DataReporteFinalizacion from './components/ReportesFinalizacion'
 
 
 function App() {
@@ -25,7 +27,7 @@ function App() {
           <p>ADMIN</p>
           <img src={imgAdmin} alt="" />
         </div>
-        <DataReporteRechazo dataReporteRechazo={dataReportes}/>
+        <DataReporteFinalizacion dataReporteFinalizacion={dataReportesFinalizacion}/>
       </div>
     </div>
   )
