@@ -11,8 +11,10 @@ import DataListaTrabajos from './components/ListaTrabajos'
 import { defaultData } from './components/utils/defaultData'
 import { dataReportes } from './components/utils/dataReportes'
 import { dataReportesFinalizacion } from './components/utils/dataFinalizacion'
+import { dataAlmacen } from './components/utils/dataAlmacen'
 import DataReporteRechazo from './components/ReportesRechazo'
 import DataReporteFinalizacion from './components/ReportesFinalizacion'
+import DataAlmacen from './components/Almacen'
 
 
 function App() {
@@ -27,7 +29,7 @@ function App() {
           <p>ADMIN</p>
           <img src={imgAdmin} alt="" />
         </div>
-        <DataReporteFinalizacion dataReporteFinalizacion={dataReportesFinalizacion}/>
+        <DataAlmacen dataAlmacen={dataAlmacen}/>
       </div>
     </div>
   )
