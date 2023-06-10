@@ -14,11 +14,13 @@ import { dataReportesFinalizacion } from './components/utils/dataFinalizacion'
 import { dataAlmacen } from './components/utils/dataAlmacen'
 import { dataDocumentoRecepcion } from './components/utils/dataDocumentoRecepcion'
 import { dataDocumentoEntrega } from './components/utils/dataDocumentoEntrega'
+import { dataUsuario } from './components/utils/dataUsuario'
 
 import DataReporteRechazo from './components/ReportesRechazo'
 import DataReporteFinalizacion from './components/ReportesFinalizacion'
 import DataAlmacen from './components/Almacen'
 import DataDocumentoRecepcionEntrega from './components/DocumentosRecepcionEntrega'
+import DataUsuario from './components/Usuarios'
 
 
 function App() {
@@ -33,7 +35,7 @@ function App() {
           <p>ADMIN</p>
           <img src={imgAdmin} alt="" />
         </div>
-        <DataDocumentoRecepcionEntrega dataDocumentoRecepcion={dataDocumentoRecepcion} dataDocumentoEntrega={dataDocumentoEntrega}/>
+        <DataUsuario dataUsuario={dataUsuario}/>
       </div>
     </div>
   )
