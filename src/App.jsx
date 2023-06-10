@@ -6,7 +6,10 @@ import SideBar from './components/common/SideBar'
 
 import imgAdmin from './assets/images/img-admin.png'
 import MasTrabajoOrden from './components/MasTrabajoOrden'
-import ListaTrabajos from './components/ListaTrabajos'
+import DataListaTrabajos from './components/ListaTrabajos'
+
+import { defaultData } from './components/utils/defaultData'
+
 
 function App() {
   const [count, setCount] = useState(0)
@@ -20,7 +23,7 @@ function App() {
           <p>ADMIN</p>
           <img src={imgAdmin} alt="" />
         </div>
-        <ListaTrabajos></ListaTrabajos>
+        <DataListaTrabajos dataTrabajos={defaultData}/>
       </div>
     </div>
   )
