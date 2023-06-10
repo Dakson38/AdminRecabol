@@ -50,53 +50,113 @@ const DebouncedInput = ({ value: keyWord, onChange, ...props }) => {
     )
 }
 
-const DataDocumentoRecepcionEntrega = ({ dataDocumentoRecepcionEntrega }) => {
-    const [data, setData] = useState(dataDocumentoRecepcionEntrega)
+const DataDocumentoRecepcionEntrega = ({ dataDocumentoEntrega, dataDocumentoRecepcion }) => {
+    let [data, setData] = useState([]);
     const [globalFilter, setGlobalFilter] = useState('')
     const [sorting, setSorting] = useState([])
+
+    const [mostrarDocumento, setmostrarDocumento] = useState(false)
+
+    const cambiarDocumento = () => {
+        setmostrarDocumento(!mostrarDocumento);
+    };
+
     console.log(globalFilter);
 
-    const columns = [
-        {
-            accessorKey: 'nro',
-            header: () => <span>N°</span>,
-            cell: info => <span className='font-bold'>{info.getValue()}</span>
-        },
-        {
-            accessorKey: 'empleado_nombre',
-            header: () => <span>Empleado Nombre</span>
-        },
-        {
-            accessorKey: 'empleado_apellido',
-            header: () => <span> Empleado Apellido</span>
-        },
-        {
-            accessorKey: 'fecha_entrega',
-            header: () => <span> Fecha de Entrega</span>
-        },
-        {
-            accessorKey: 'referencia',
-            header: () => <span>Referencia</span>
-        },
-        {
-            accessorKey: 'cotizacion',
-            header: () => <span>Cotización (Bs.)</span>
-        },
-        {
-            accessorKey: 'anticipo',
-            header: () => <span>Anticipo</span>
-        },
-        {
-            accessorKey: 'vermas',
-            header: 'Ver Más',
-            cell: info => {
-                return (
-                    <button className='w-40 h-8 text-white px-2 rounded-full font-semibold bg-red-500 flex flex-row items-center justify-center gap-2'>VER MÁS<img src={descargaIcon} alt="" className='w-4 h-4' /></button>
-                )
+    let columns = [];
+    useEffect(() => {
+        if (mostrarDocumento) {
+          setData(dataDocumentoRecepcion);
+        } else {
+          setData(dataDocumentoEntrega);
+        }
+      }, [mostrarDocumento, dataDocumentoEntrega, dataDocumentoRecepcion]);
+    if (mostrarDocumento) {
+        columns = [
+            {
+                accessorKey: 'nro',
+                header: () => <span>N°</span>,
+                cell: info => <span className='font-bold'>{info.getValue()}</span>
             },
-            enableSorting: false
-        },
-    ]
+            {
+                accessorKey: 'empleado_nombre',
+                header: () => <span>Empleado Nombre</span>
+            },
+            {
+                accessorKey: 'empleado_apellido',
+                header: () => <span> Empleado Apellido</span>
+            },
+            {
+                accessorKey: 'fecha_entrega',
+                header: () => <span> Fecha de Entrega</span>
+            },
+            {
+                accessorKey: 'referencia',
+                header: () => <span>Referencia</span>
+            },
+            {
+                accessorKey: 'cotizacion',
+                header: () => <span>Cotización (Bs.)</span>
+            },
+            {
+                accessorKey: 'anticipo',
+                header: () => <span>Anticipo</span>
+            },
+            {
+                accessorKey: 'vermas',
+                header: 'Ver Más',
+                cell: info => {
+                    return (
+                        <button className='w-40 h-8 text-white px-2 rounded-full font-semibold bg-red-500 flex flex-row items-center justify-center gap-2'>VER MÁS<img src={descargaIcon} alt="" className='w-4 h-4' /></button>
+                    )
+                },
+                enableSorting: false
+            },
+        ]
+    } else {
+        columns = [
+            {
+                accessorKey: 'nro_orden',
+                header: () => <span>N° Orden</span>,
+                cell: info => <span className='font-bold'>{info.getValue()}</span>
+            },
+            {
+                accessorKey: 'empleado_nombre',
+                header: () => <span>Empleado Nombre</span>
+            },
+            {
+                accessorKey: 'empleado_apellido',
+                header: () => <span> Empleado Apellido</span>
+            },
+            {
+                accessorKey: 'extras',
+                header: () => <span>Extras</span>
+            },
+            {
+                accessorKey: 'descuentos',
+                header: () => <span>Descuentos</span>
+            },
+            {
+                accessorKey: 'referencia',
+                header: () => <span>Referencia</span>
+            },
+            {
+                accessorKey: 'costo',
+                header: () => <span>Costo (Bs.)</span>
+            },
+            {
+                accessorKey: 'vermas',
+                header: 'Ver Más',
+                cell: info => {
+                    return (
+                        <button className='w-40 h-8 text-white px-2 rounded-full font-semibold bg-red-500 flex flex-row items-center justify-center gap-2'>VER MÁS<img src={descargaIcon} alt="" className='w-4 h-4' /></button>
+                    )
+                },
+                enableSorting: false
+            },
+        ]
+    }
+
 
     const getStateTable = () => {
         const totalRows = table.getFilteredRowModel().rows.length;
@@ -137,7 +197,13 @@ const DataDocumentoRecepcionEntrega = ({ dataDocumentoRecepcionEntrega }) => {
     return (
         <>
             <div className='text-2xl px-6 py-4 font-bold bg-gray-300'>
-                <h2>DOCUMENTOS DE RECEPCIÓN</h2>
+                {mostrarDocumento ? (
+                    <h2>DOCUMENTOS DE RECEPCIÓN</h2>
+                ) : (
+                    <h2>DOCUMENTOS DE ENTREGA</h2>
+                )
+
+                }
             </div>
             <div className='px-6 py-4 text-xs'>
 
@@ -152,7 +218,7 @@ const DataDocumentoRecepcionEntrega = ({ dataDocumentoRecepcionEntrega }) => {
                         />
                         <MagnifyingGlassIcon className='w-5 h-5 absolute top-2 left-1' />
                     </div>
-                    <button className='p-2 bg-blue-300 flex flex-row items-center font-semibold ml-auto border border-gray-300 rounded w-40 h-10 text-white justify-center gap-2'>IR A DOCUMENTOS DE ENTREGA <img src={docurecepIcon} alt=""/></button>
+                    <button onClick={cambiarDocumento} className='p-2 bg-blue-300 flex flex-row items-center font-semibold ml-auto border border-gray-300 rounded w-40 h-10 text-white justify-center gap-2'>{mostrarDocumento ? 'IR A DOCUMENTOS DE ENTREGA' : 'IR A DOCUMENTOS DE RECEPCIÓN'} <img src={docurecepIcon} alt="" /></button>
                 </div>
                 <div className='overflow-auto'>
                     <table className='table-auto w-full min-w-[560px]'>
@@ -266,3 +332,4 @@ const DataDocumentoRecepcionEntrega = ({ dataDocumentoRecepcionEntrega }) => {
 }
 
 export default DataDocumentoRecepcionEntrega
+
