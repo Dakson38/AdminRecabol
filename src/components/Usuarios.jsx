@@ -28,6 +28,13 @@ import {
 } from '@heroicons/react/24/solid'
 
 const fuzzyFilter = (row, columnId, value, addMeta) => {
+    if (columnId === 'sucursal') {
+        const itemRank = row.getValue(columnId) === value ? 1 : -1;
+        addMeta({ itemRank });
+        return itemRank === 1;
+      }
+
+
     const itemRank = rankItem(row.getValue(columnId), value)
 
     addMeta({ itemRank })
@@ -57,6 +64,8 @@ const DataUsuario = ({ dataUsuario }) => {
     const [data, setData] = useState(dataUsuario)
     const [globalFilter, setGlobalFilter] = useState('')
     const [sorting, setSorting] = useState([])
+    const [selectedCity, setSelectedCity] = useState('');
+
     console.log(globalFilter);
 
     const columns = [
@@ -129,6 +138,15 @@ const DataUsuario = ({ dataUsuario }) => {
         }
     }
 
+    useEffect(() => {
+        if (selectedCity) {
+          const filtered = dataUsuario.filter(item => item.sucursal === selectedCity);
+          setData(filtered);
+        } else {
+          setData(dataUsuario);
+        }
+      }, [selectedCity, dataUsuario]);
+
     const table = useReactTable({
         data,
         columns,
@@ -169,16 +187,20 @@ const DataUsuario = ({ dataUsuario }) => {
                     </div>
 
                     {/***************implementar filtrado por ciudad********************/}
-                    <select className='bg-blue-300 font-semibold ml-auto border border-gray-300 rounded w-40 h-10 text-white text-center'
-                    onChange={e => setSelectedOption(e.target.value)}>
+                    <select
+                        className='bg-blue-300 font-semibold ml-auto border border-gray-300 rounded w-40 h-10 text-white text-center'
+                        onChange={e => setSelectedCity(e.target.value)}
+                        value={selectedCity}
+                    >
                         <option value="">SUCURSAL</option>
                         <option value="Oruro">Oruro</option>
                         <option value="La Paz">La Paz</option>
-                        <option value="Santa Cruz">Santa Cruz</option>    
+                        <option value="Santa Cruz">Santa Cruz</option>
                     </select>
+
                     {/***********************************/}
-                    <button className='bg-red-300 flex flex-row items-center font-semibold ml-auto border border-gray-300 rounded w-40 h-10 text-white justify-center gap-2'>INACTIVOS <img src={inactivolIcon} alt=""/></button>
-                    <button className='bg-blue-300 flex flex-row items-center font-semibold ml-auto border border-gray-300 rounded w-40 h-10 text-white justify-center gap-2'>AÑADIR USUARIO <img src={userIcon} alt=""/></button>
+                    <button className='bg-red-300 flex flex-row items-center font-semibold ml-auto border border-gray-300 rounded w-40 h-10 text-white justify-center gap-2'>INACTIVOS <img src={inactivolIcon} alt="" /></button>
+                    <button className='bg-blue-300 flex flex-row items-center font-semibold ml-auto border border-gray-300 rounded w-40 h-10 text-white justify-center gap-2'>AÑADIR USUARIO <img src={userIcon} alt="" /></button>
                 </div>
                 <div className='overflow-auto'>
                     <table className='table-auto w-full min-w-[560px]'>
