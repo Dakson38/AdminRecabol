@@ -21,6 +21,7 @@ import DataReporteFinalizacion from './components/ReportesFinalizacion'
 import DataAlmacen from './components/Almacen'
 import DataDocumentoRecepcionEntrega from './components/DocumentosRecepcionEntrega'
 import DataUsuario from './components/Usuarios'
+import AlmacenForm from './components/forms/AlmacenForm'
 
 
 function App() {
@@ -35,7 +36,7 @@ function App() {
           <p>ADMIN</p>
           <img src={imgAdmin} alt="" />
         </div>
-        <DataUsuario dataUsuario={dataUsuario}/>
+        <DataAlmacen dataAlmacen={dataAlmacen}/>
       </div>
     </div>
   )

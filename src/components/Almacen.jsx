@@ -24,6 +24,7 @@ import {
     ChevronDoubleRightIcon,
     ChevronRightIcon,
 } from '@heroicons/react/24/solid'
+import AlmacenForm from './forms/AlmacenForm'
 
 const fuzzyFilter = (row, columnId, value, addMeta) => {
     const itemRank = rankItem(row.getValue(columnId), value)
@@ -55,6 +56,8 @@ const DataAlmacen = ({ dataAlmacen }) => {
     const [data, setData] = useState(dataAlmacen)
     const [globalFilter, setGlobalFilter] = useState('')
     const [sorting, setSorting] = useState([])
+
+    const [estadoForm, cambiarEstadoForm] = useState(false);
     console.log(globalFilter);
 
     const columns = [
@@ -137,11 +140,15 @@ const DataAlmacen = ({ dataAlmacen }) => {
                             value={globalFilter ?? ''}
                             onChange={value => setGlobalFilter(String(value))}
                             className='px-6 py-2 text-gray-600 border border-gray-300 rounded outline-indigo-700'
-                            placeholder='Buscar reportes'
+                            placeholder='Buscar material'
                         />
                         <MagnifyingGlassIcon className='w-5 h-5 absolute top-2 left-1' />
                     </div>
-                    <button className='bg-blue-300 flex flex-row items-center font-semibold ml-auto border border-gray-300 rounded w-40 h-10 text-white justify-center gap-2'>AÑADIR USUARIO <img src={userIcon} alt=""/></button>
+                    <button onClick={() => cambiarEstadoForm(!estadoForm)} className='bg-blue-300 flex flex-row items-center font-semibold ml-auto border border-gray-300 rounded w-40 h-10 text-white justify-center gap-2'>AÑADIR MATERIAL<img src={userIcon} alt=""/></button>
+                    <AlmacenForm
+                        estado={estadoForm}
+                        cambiarEstado={cambiarEstadoForm}
+                    />
                 </div>
                 <div className='overflow-auto'>
                     <table className='table-auto w-full min-w-[560px]'>
