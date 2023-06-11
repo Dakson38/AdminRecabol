@@ -95,7 +95,6 @@ const DataReporteFinalizacion = ({ dataReporteFinalizacion }) => {
             cell: info => {
                 return (
                     <>
-                        <button className=''><img src={editIcon} alt="" /></button>
                         <button className=''><img src={eliminarIcon} alt="" /></button>
                     </>
                 )

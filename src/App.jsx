@@ -36,7 +36,7 @@ function App() {
           <p>ADMIN</p>
           <img src={imgAdmin} alt="" />
         </div>
-        <DataAlmacen dataAlmacen={dataAlmacen}/>
+        <DataUsuario dataUsuario={dataUsuario} />
       </div>
     </div>
   )

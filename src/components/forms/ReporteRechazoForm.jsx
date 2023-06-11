@@ -66,7 +66,7 @@ const ReporteRechazoForm = ({ estado, cambiarEstado }) => {
                                 <div  className='md:w-1/2 px-3 mb-6 md:mb-0'>
                                     <label htmlFor="estado_rechazo" className='uppercase tracking-wide text-white text-xs font-bold mb-2'>Estado</label>
                                     <Field
-                                        type='number'
+                                        type='text'
                                         id='estado_rechazo'
                                         name='estado_rechazo'
                                         placeholder='Ingrese el estado del neumatico'

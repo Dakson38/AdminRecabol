@@ -26,13 +26,14 @@ import {
     ChevronDoubleRightIcon,
     ChevronRightIcon,
 } from '@heroicons/react/24/solid'
+import UsuarioForm from './forms/UsuarioForm'
 
 const fuzzyFilter = (row, columnId, value, addMeta) => {
     if (columnId === 'sucursal') {
         const itemRank = row.getValue(columnId) === value ? 1 : -1;
         addMeta({ itemRank });
         return itemRank === 1;
-      }
+    }
 
 
     const itemRank = rankItem(row.getValue(columnId), value)
@@ -65,6 +66,7 @@ const DataUsuario = ({ dataUsuario }) => {
     const [globalFilter, setGlobalFilter] = useState('')
     const [sorting, setSorting] = useState([])
     const [selectedCity, setSelectedCity] = useState('');
+    const [estadoForm, cambiarEstadoForm] = useState(false);
 
     console.log(globalFilter);
 
@@ -140,12 +142,12 @@ const DataUsuario = ({ dataUsuario }) => {
 
     useEffect(() => {
         if (selectedCity) {
-          const filtered = dataUsuario.filter(item => item.sucursal === selectedCity);
-          setData(filtered);
+            const filtered = dataUsuario.filter(item => item.sucursal === selectedCity);
+            setData(filtered);
         } else {
-          setData(dataUsuario);
+            setData(dataUsuario);
         }
-      }, [selectedCity, dataUsuario]);
+    }, [selectedCity, dataUsuario]);
 
     const table = useReactTable({
         data,
@@ -169,6 +171,10 @@ const DataUsuario = ({ dataUsuario }) => {
 
     return (
         <>
+            <UsuarioForm
+                estado={estadoForm}
+                cambiarEstado={cambiarEstadoForm} />
+
             <div className='text-2xl px-6 py-4 font-bold bg-gray-300'>
                 <h2>USUARIOS</h2>
             </div>
@@ -200,7 +206,7 @@ const DataUsuario = ({ dataUsuario }) => {
 
                     {/***********************************/}
                     <button className='bg-red-300 flex flex-row items-center font-semibold ml-auto border border-gray-300 rounded w-40 h-10 text-white justify-center gap-2'>INACTIVOS <img src={inactivolIcon} alt="" /></button>
-                    <button className='bg-blue-300 flex flex-row items-center font-semibold ml-auto border border-gray-300 rounded w-40 h-10 text-white justify-center gap-2'>AÑADIR USUARIO <img src={userIcon} alt="" /></button>
+                    <button onClick={() => cambiarEstadoForm(!estadoForm)} className='bg-blue-300 flex flex-row items-center font-semibold ml-auto border border-gray-300 rounded w-40 h-10 text-white justify-center gap-2'>AÑADIR USUARIO <img src={userIcon} alt="" /></button>
                 </div>
                 <div className='overflow-auto'>
                     <table className='table-auto w-full min-w-[560px]'>
