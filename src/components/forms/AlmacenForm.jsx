@@ -37,7 +37,7 @@ const AlmacenForm = ({ estado, cambiarEstado }) => {
                 }}
             >
                 {({ errors }) => (
-                    <div className='fixed ml-60 bg-gray-800 bg-white py-20 px-12 lg:px-24 shadow-xl mb-24 rounded-2xl'>
+                    <div className='fixed ml-60 bg-gray-800 py-20 px-12 lg:px-24 shadow-xl mb-24 rounded-2xl'>
                         <h1 className='text-white text-3xl font-bold'>Añadir Material</h1>
                         <Form>
                             <div>

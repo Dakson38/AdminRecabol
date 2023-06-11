@@ -24,6 +24,7 @@ import {
     ChevronDoubleRightIcon,
     ChevronRightIcon,
 } from '@heroicons/react/24/solid'
+import ReporteRechazoForm from './forms/ReporteRechazoForm'
 
 const fuzzyFilter = (row, columnId, value, addMeta) => {
     const itemRank = rankItem(row.getValue(columnId), value)
@@ -52,9 +53,12 @@ const DebouncedInput = ({ value: keyWord, onChange, ...props }) => {
 }
 
 const DataReporteRechazo = ({ dataReporteRechazo }) => {
-    const [data, setData] = useState(dataReporteRechazo)
-    const [globalFilter, setGlobalFilter] = useState('')
-    const [sorting, setSorting] = useState([])
+    const [data, setData] = useState(dataReporteRechazo);
+    const [globalFilter, setGlobalFilter] = useState('');
+    const [sorting, setSorting] = useState([]);
+
+    const [estadoForm, cambiarEstadoForm] = useState(false);
+
     console.log(globalFilter);
 
     const columns = [
@@ -99,7 +103,7 @@ const DataReporteRechazo = ({ dataReporteRechazo }) => {
             cell: info => {
                 return (
                     <>
-                        <button className=''><img src={editIcon} alt="" /></button>
+                        <button onClick={() => cambiarEstadoForm(!estadoForm)}><img src={editIcon} alt="" /></button>
                         <button className=''><img src={eliminarIcon} alt="" /></button>
                     </>
                 )

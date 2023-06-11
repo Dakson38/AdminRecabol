@@ -25,6 +25,7 @@ import {
     ChevronRightIcon,
 } from '@heroicons/react/24/solid'
 import AlmacenForm from './forms/AlmacenForm'
+import ReporteRechazoForm from './forms/ReporteRechazoForm'
 
 const fuzzyFilter = (row, columnId, value, addMeta) => {
     const itemRank = rankItem(row.getValue(columnId), value)
@@ -128,6 +129,10 @@ const DataAlmacen = ({ dataAlmacen }) => {
 
     return (
         <>
+            <ReporteRechazoForm
+                estado={estadoForm}
+                cambiarEstado={cambiarEstadoForm}
+            />
             <div className='text-2xl px-6 py-4 font-bold bg-gray-300'>
                 <h2>ALMACEN</h2>
             </div>
@@ -144,11 +149,7 @@ const DataAlmacen = ({ dataAlmacen }) => {
                         />
                         <MagnifyingGlassIcon className='w-5 h-5 absolute top-2 left-1' />
                     </div>
-                    <button onClick={() => cambiarEstadoForm(!estadoForm)} className='bg-blue-300 flex flex-row items-center font-semibold ml-auto border border-gray-300 rounded w-40 h-10 text-white justify-center gap-2'>AÑADIR MATERIAL<img src={userIcon} alt=""/></button>
-                    <AlmacenForm
-                        estado={estadoForm}
-                        cambiarEstado={cambiarEstadoForm}
-                    />
+                    <button onClick={() => cambiarEstadoForm(!estadoForm)} className='bg-blue-300 flex flex-row items-center font-semibold ml-auto border border-gray-300 rounded w-40 h-10 text-white justify-center gap-2'>AÑADIR MATERIAL<img src={userIcon} alt="" /></button>
                 </div>
                 <div className='overflow-auto'>
                     <table className='table-auto w-full min-w-[560px]'>
