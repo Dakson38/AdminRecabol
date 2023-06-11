@@ -27,6 +27,7 @@ import {
     ChevronRightIcon,
 } from '@heroicons/react/24/solid'
 import UsuarioForm from './forms/UsuarioForm'
+import RenovacionContratoForm from './forms/RenovacionContratoForm'
 
 const fuzzyFilter = (row, columnId, value, addMeta) => {
     if (columnId === 'sucursal') {
@@ -171,7 +172,7 @@ const DataUsuario = ({ dataUsuario }) => {
 
     return (
         <>
-            <UsuarioForm
+            <RenovacionContratoForm
                 estado={estadoForm}
                 cambiarEstado={cambiarEstadoForm} />
 
