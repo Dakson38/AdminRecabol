@@ -8,34 +8,53 @@ const UsuarioForm = ({ estado, cambiarEstado }) => {
             estado &&
             <Formik
                 initialValues={{
-                    estado_rechazo: '',
-                    momento_rechazo: '',
-                    causa: '',
-                    observaciones: ''
+                    nombres: '',
+                    apellidos: '',
+                    ci: '',
+                    rol: '',
+                    sucursal:'',
+                    usuario:'',
+                    password:'',
+                    fecha_contratacion:'',
+                    fecha_finalizacion:''
                 }}
                 validate={(valores) => {
                     let errores = {};
 
-                    if (!valores.estado_rechazo) {
-                        errores.estado_rechazo = 'Por favor ingrese el estado del neumatico'
-                    } else if (!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(valores.estado_rechazo)) {
-                        errores.estado_rechazo = 'Solo puede contener letras y espacios'
+                    if (!valores.nombres) {
+                        errores.nombres = 'Por favor ingrese un nombre'
+                    } else if (!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(valores.nombres)) {
+                        errores.nombres = 'Solo puede contener letras y espacios'
                     }
-                    if (!valores.momento_rechazo) {
-                        errores.momento_rechazo = 'Por favor ingrese el momento en el que se rechazo'
-                    } else if (!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(valores.momento_rechazo)) {
-                        errores.momento_rechazo = 'Solo puede contener letras y espacios'
+
+                    if (!valores.apellidos) {
+                        errores.apellidos = 'Por favor ingrese los apellidos'
+                    } else if (!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(valores.apellidos)) {
+                        errores.apellidos = 'Solo puede contener letras y espacios'
                     }
-                    if (!valores.causa) {
-                        errores.causa = 'Por favor ingrese la causa del rechazo'
-                    } else if (!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(valores.causa)) {
-                        errores.causa = 'Solo puede contener letras y espacios'
+
+                    if (!valores.ci) {
+                        errores.ci = 'Por favor ingrese el ci'
+                    } else if (!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(valores.ci)) {
+                        errores.ci = 'Solo puede contener numeros'
                     }
-                    if (!valores.observaciones) {
-                        errores.observaciones = 'Por favor ingrese si tuvo observaciones'
-                    } else if (!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(valores.observaciones)) {
-                        errores.observaciones = 'Solo puede contener letras y espacios'
+
+                    if (!valores.rol) {
+                        errores.rol = 'Por favor seleccione un rol'
                     }
+
+                    if (!valores.sucursal) {
+                        errores.sucursal = 'Por favor seleccione una sucursal'
+                    }
+
+                    if (!valores.usuario) {
+                        errores.usuario = 'Por favor ingrese un usuario'
+                    }
+
+                    if (!valores.password) {
+                        errores.password = 'Por favor ingrese una contraseña'
+                    }
+
                     return errores
                 }}
                 onSubmit={(valores, { resetForm }) => {
@@ -57,7 +76,7 @@ const UsuarioForm = ({ estado, cambiarEstado }) => {
                                         id='nombres'
                                         name='nombres'
                                         placeholder='Ingrese el nombre'
-                                        className='w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3'
+                                        className='w-full bg-gray-200 text-black border border-gray-200 rounded py-1 px-4 mb-3'
                                     />
                                     <ErrorMessage name='nombres' component={() => (<div className='text-red-500 text-xs italic'>{errors.nombres}</div>)} />
                                 </div>
@@ -68,7 +87,7 @@ const UsuarioForm = ({ estado, cambiarEstado }) => {
                                         id='apellidos'
                                         name='apellidos'
                                         placeholder='Ingrese el apellido'
-                                        className='w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3'
+                                        className='w-full bg-gray-200 text-black border border-gray-200 rounded py-1 px-4 mb-3'
                                     />
                                     <ErrorMessage name='apellidos' component={() => (<div className='text-red-500 text-xs italic mb-3'>{errors.apellidos}</div>)} />
                                 </div>
@@ -81,7 +100,7 @@ const UsuarioForm = ({ estado, cambiarEstado }) => {
                                         id='ci'
                                         name='ci'
                                         placeholder='Ingrese el ci'
-                                        className='w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3'
+                                        className='w-full bg-gray-200 text-black border border-gray-200 rounded py-1 px-4 mb-3'
                                     />
                                     <ErrorMessage name='ci' component={() => (<div className='text-red-500 text-xs italic'>{errors.ci}</div>)} />
                                 </div>
@@ -91,7 +110,7 @@ const UsuarioForm = ({ estado, cambiarEstado }) => {
                                         as='select'
                                         id='rol'
                                         name='rol'
-                                        className='w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3'
+                                        className='w-full bg-gray-200 text-black border border-gray-200 rounded py-1 px-4 mb-3'
                                     >
                                         <option value="">Seleccione un rol</option>
                                         <option value="operario">Operario</option>
@@ -109,7 +128,7 @@ const UsuarioForm = ({ estado, cambiarEstado }) => {
                                         as='select'
                                         id='sucursal'
                                         name='sucursal'
-                                        className='w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3'
+                                        className='w-full bg-gray-200 text-black border border-gray-200 rounded py-1 px-4 mb-3'
                                     >
                                         <option value="">Seleccione una Sucursal</option>
                                         <option value="operario">La Paz</option>
@@ -125,7 +144,7 @@ const UsuarioForm = ({ estado, cambiarEstado }) => {
                                         name='fecha_contratacion'
                                     >
                                         {({ field }) => (
-                                            <input type="date" {...field} className='w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3' />
+                                            <input type="date" {...field} className='w-full bg-gray-200 text-black border border-gray-200 rounded py-1 px-4 mb-3' />
                                         )}
                                     </Field>
                                     <ErrorMessage name='fecha_contratacion' component={() => (<div className='text-red-500 text-xs italic mb-3'>{errors.fecha_contratacion}</div>)} />
@@ -139,7 +158,7 @@ const UsuarioForm = ({ estado, cambiarEstado }) => {
                                         type='text'
                                         id='usuario'
                                         name='usuario'
-                                        className='w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3'
+                                        className='w-full bg-gray-200 text-black border border-gray-200 rounded py-1 px-4 mb-3'
                                     />
                                     <ErrorMessage name='usuario' component={() => (<div className='text-red-500 text-xs italic mb-3'>{errors.usuario}</div>)} />
                                 </div>
@@ -150,7 +169,7 @@ const UsuarioForm = ({ estado, cambiarEstado }) => {
                                         name='fecha_finalizacion'
                                     >
                                         {({ field }) => (
-                                            <input type="date" {...field} className='w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3' />
+                                            <input type="date" {...field} className='w-full bg-gray-200 text-black border border-gray-200 rounded py-1 px-4 mb-3' />
                                         )}
                                     </Field>
                                     <ErrorMessage name='fecha_finalizacion' component={() => (<div className='text-red-500 text-xs italic mb-3'>{errors.fecha_finalizacion}</div>)} />
@@ -164,7 +183,7 @@ const UsuarioForm = ({ estado, cambiarEstado }) => {
                                         type='password'
                                         id='password'
                                         name='password'
-                                        className='w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3'
+                                        className='w-full bg-gray-200 text-black border border-gray-200 rounded py-1 px-4 mb-3'
                                     />
                                     <ErrorMessage name='password' component={() => (<div className='text-red-500 text-xs italic mb-3'>{errors.password}</div>)} />
                                 </div>
