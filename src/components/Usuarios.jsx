@@ -172,14 +172,14 @@ const DataUsuario = ({ dataUsuario }) => {
 
     return (
         <>
-            <RenovacionContratoForm
+            <UsuarioForm
                 estado={estadoForm}
                 cambiarEstado={cambiarEstadoForm} />
 
             <div className='text-2xl px-6 py-4 font-bold bg-gray-300'>
                 <h2>USUARIOS</h2>
             </div>
-            <div className='px-6 py-4 text-xs'>
+            <div className='px-6 py-4 text-xs w-full'>
 
                 <div className='my-2 flex justify-start'>
                     <div className='relative'>
@@ -206,7 +206,7 @@ const DataUsuario = ({ dataUsuario }) => {
                     </select>
 
                     {/***********************************/}
-                    <button className='bg-red-300 flex flex-row items-center font-semibold ml-auto border border-gray-300 rounded w-40 h-10 text-white justify-center gap-2'>INACTIVOS <img src={inactivolIcon} alt="" /></button>
+                    {/*<button className='bg-red-300 flex flex-row items-center font-semibold ml-auto border border-gray-300 rounded w-40 h-10 text-white justify-center gap-2'>INACTIVOS <img src={inactivolIcon} alt="" /></button>*/}
                     <button onClick={() => cambiarEstadoForm(!estadoForm)} className='bg-blue-300 flex flex-row items-center font-semibold ml-auto border border-gray-300 rounded w-40 h-10 text-white justify-center gap-2'>AÑADIR USUARIO <img src={userIcon} alt="" /></button>
                 </div>
                 <div className='overflow-auto'>

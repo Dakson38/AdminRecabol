@@ -43,7 +43,7 @@
 
     font-size: small;
 }
-.lista-menu-sidebar a {
+.lista-menu-sidebar button {
     display: flex;
     gap: 10px;
     align-items: center;
@@ -62,7 +62,7 @@
     padding-left: 5%;
     font-size: small;
 }
-.lista-conf-salir a{
+.lista-conf-salir button{
     display: flex;
     gap: 10px;
     align-items: center;
